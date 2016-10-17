@@ -9,29 +9,29 @@ MagicaVoxel .vox File Format [10/17/2016]
 
 Chunk 'MAIN'
 {
-	// pack of models
-	Chunk 'PACK'	: optional
+    // pack of models
+    Chunk 'PACK'	: optional
 
-	// models
-	Chunk 'SIZE'
-	Chunk 'XYZI'
+    // models
+    Chunk 'SIZE'
+    Chunk 'XYZI'
 
-	Chunk 'SIZE'
-	Chunk 'XYZI'
+    Chunk 'SIZE'
+    Chunk 'XYZI'
 
-	...
+    ...
 
-	Chunk 'SIZE'
-	Chunk 'XYZI'
+    Chunk 'SIZE'
+    Chunk 'XYZI'
 
-	// palette
-	Chunk 'RGBA'	: optional
+    // palette
+    Chunk 'RGBA'	: optional
 
-	// materials
-	Chunk 'MATT'	: optional
-	Chunk 'MATT'
-	...
-	Chunk 'MATT'
+    // materials
+    Chunk 'MATT'	: optional
+    Chunk 'MATT'
+    ...
+    Chunk 'MATT'
 }
 -------------------------------------------------------------------------------
 
@@ -84,12 +84,12 @@ M		|			| children chunks
 # Bytes | Type		| Value
 -------------------------------------------------------------------------------
 4 x 256	| int		| R, G, B, A : 1 byte for each component
-					| <NOTICE>
-					| [0-254] are mapped to color index [1-255], e.g : 
-					| 
-					| for ( int i = 0; i < 255; i++ ) {
-					|     palette[i + 1] = ReadRGBA();    
-					| }
+                    | <NOTICE>
+                    | [0-254] are mapped to color index [1-255], e.g : 
+                    | 
+                    | for ( int i = 0; i < 255; i++ ) {
+                    |     palette[i + 1] = ReadRGBA();    
+                    | }
 -------------------------------------------------------------------------------
 
 
@@ -100,24 +100,24 @@ M		|			| children chunks
 4		| int		| id [1-255]
 
 4		| int		| material type
-					| 0 : diffuse
-					| 1 : metal
-					| 2 : glass
-					| 3 : emissive
+                    | 0 : diffuse
+                    | 1 : metal
+                    | 2 : glass
+                    | 3 : emissive
 
 4		| float		| material weight
-					| diffuse	: = 1.0
-					| otherwise	: (0.0 - 1.0] : greater than 0
+                    | diffuse	: = 1.0
+                    | otherwise	: (0.0 - 1.0] : greater than 0
 
 4		| int		| property bits : set if value is saved in next section
-					| bit(0) : isPlastic (*no value)
-					| bit(1) : Roughness
-					| bit(2) : Specular
-					| bit(3) : IOR
-					| bit(4) : Attenuation
-					| bit(5) : isTotalPower (*no value)
-					| bit(6) : Power
-					| bit(7) : Glow
+                    | bit(0) : isPlastic (*no value)
+                    | bit(1) : Roughness
+                    | bit(2) : Specular
+                    | bit(3) : IOR
+                    | bit(4) : Attenuation
+                    | bit(5) : isTotalPower (*no value)
+                    | bit(6) : Power
+                    | bit(7) : Glow
 
 4 * N	| float		| normalized property value (0.0 - 1.0] : greater than 0
 -------------------------------------------------------------------------------
