@@ -1,4 +1,4 @@
-MagicaVoxel .vox File Format [10/17/2016]
+MagicaVoxel .vox File Format [10/18/2016]
 
 1. File Structure : RIFF style
 -------------------------------------------------------------------------------
