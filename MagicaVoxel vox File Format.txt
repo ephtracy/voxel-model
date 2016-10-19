@@ -2,15 +2,15 @@ MagicaVoxel .vox File Format [10/17/2016]
 
 1. File Structure : RIFF style
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| string	| id 'VOX ' : 'V' 'O' 'X' 'space', 'V' is first
-4		| int		| version number (150)
+4        | string     | id 'VOX ' : 'V' 'O' 'X' 'space', 'V' is first
+4        | int        | version number (150)
 
 Chunk 'MAIN'
 {
     // pack of models
-    Chunk 'PACK'	: optional
+    Chunk 'PACK'    : optional
 
     // models
     Chunk 'SIZE'
@@ -25,10 +25,10 @@ Chunk 'MAIN'
     Chunk 'XYZI'
 
     // palette
-    Chunk 'RGBA'	: optional
+    Chunk 'RGBA'    : optional
 
     // materials
-    Chunk 'MATT'	: optional
+    Chunk 'MATT'    : optional
     Chunk 'MATT'
     ...
     Chunk 'MATT'
@@ -38,15 +38,15 @@ Chunk 'MAIN'
 
 2. Chunk Structure
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| string	| chunk id
-4		| int		| num bytes of chunk content (N)
-4		| int		| num bytes of children chunks (M)
+4        | string     | chunk id
+4        | int        | num bytes of chunk content (N)
+4        | int        | num bytes of children chunks (M)
 
-N		|			| chunk content
+N        |            | chunk content
 
-M		|			| children chunks
+M        |            | children chunks
 -------------------------------------------------------------------------------
 
 3. Chunk id 'MAIN' : the root chunk and parent chunk of all the other chunks
@@ -54,70 +54,74 @@ M		|			| children chunks
 
 4. Chunk id 'PACK' : if it is absent, only one model in the file
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| int		| numModels : num of SIZE and XYZI chunks
+4        | int        | numModels : num of SIZE and XYZI chunks
 -------------------------------------------------------------------------------
 
 
 5. Chunk id 'SIZE' : model size
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| int		| size x
-4		| int		| size y
-4		| int		| size z : gravity direction
+4        | int        | size x
+4        | int        | size y
+4        | int        | size z : gravity direction
 -------------------------------------------------------------------------------
 
 
 6. Chunk id 'XYZI' : model voxels
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| int		| numVoxels
-4 x N	| int		| x, y, z, colorIndex : 1 byte for each component
+4        | int        | numVoxels
+4 x N    | int        | (x, y, z, colorIndex) : 1 byte for each component
 -------------------------------------------------------------------------------
 
 
 7. Chunk id 'RGBA' : palette
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4 x 256	| int		| R, G, B, A : 1 byte for each component
-                    | <NOTICE>
-                    | [0-254] are mapped to color index [1-255], e.g : 
-                    | 
-                    | for ( int i = 0; i < 255; i++ ) {
-                    |     palette[i + 1] = ReadRGBA();    
-                    | }
+4 x 256    | int      | (R, G, B, A) : 1 byte for each component
+                      | <NOTICE>
+                      | color [0-254] are mapped to palette index [1-255], e.g : 
+                      | 
+                      | for ( int i = 0; i < 255; i++ ) {
+                      |     palette[i + 1] = ReadRGBA(); 
+                      | }
 -------------------------------------------------------------------------------
 
 
-8. Chunk id 'MATT'	: material
+8. Chunk id 'MATT'    : material
 -------------------------------------------------------------------------------
-# Bytes | Type		| Value
+# Bytes | Type        | Value
 -------------------------------------------------------------------------------
-4		| int		| id [1-255]
+4        | int        | id [1-255]
 
-4		| int		| material type
-                    | 0 : diffuse
-                    | 1 : metal
-                    | 2 : glass
-                    | 3 : emissive
+4        | int        | material type
+                      | 0 : diffuse
+                      | 1 : metal
+                      | 2 : glass
+                      | 3 : emissive
 
-4		| float		| material weight
-                    | diffuse	: = 1.0
-                    | otherwise	: (0.0 - 1.0] : greater than 0
+4        | float      | material weight
+                      | diffuse  : 1.0
+                      | metal    : (0.0 - 1.0] : blend between metal and diffuse material
+                      | glass    : (0.0 - 1.0] : blend between glass and diffuse material
+                      | emissive : (0.0 - 1.0] : self-illuminated material
 
-4		| int		| property bits : set if value is saved in next section
-                    | bit(0) : isPlastic (*no value)
-                    | bit(1) : Roughness
-                    | bit(2) : Specular
-                    | bit(3) : IOR
-                    | bit(4) : Attenuation
-                    | bit(5) : isTotalPower (*no value)
-                    | bit(6) : Power
-                    | bit(7) : Glow
+4        | int        | property bits : set if value is saved in next section
+                      | bit(0) : Plastic
+                      | bit(1) : Roughness
+                      | bit(2) : Specular
+                      | bit(3) : IOR
+                      | bit(4) : Attenuation
+                      | bit(5) : Power
+                      | bit(6) : Glow
+                      | bit(7) : isTotalPower (*no value)
 
-4 * N	| float		| normalized property value (0.0 - 1.0] : greater than 0
+4 * N    | float      | normalized property value (0.0 - 1.0] : greater than 0
+                      | need to map to real range
+                      | Plastic material only accepts {0.0, 1.0} for this version
 -------------------------------------------------------------------------------
