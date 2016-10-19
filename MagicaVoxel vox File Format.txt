@@ -4,7 +4,7 @@ MagicaVoxel .vox File Format [10/17/2016]
 -------------------------------------------------------------------------------
 # Bytes  | Type       | Value
 -------------------------------------------------------------------------------
-4        | string     | id 'VOX ' : 'V' 'O' 'X' 'space', 'V' is first
+1x4      | char       | id 'VOX ' : 'V' 'O' 'X' 'space', 'V' is first
 4        | int        | version number (150)
 
 Chunk 'MAIN'
@@ -40,7 +40,7 @@ Chunk 'MAIN'
 -------------------------------------------------------------------------------
 # Bytes  | Type       | Value
 -------------------------------------------------------------------------------
-4        | string     | chunk id
+1x4      | char       | chunk id
 4        | int        | num bytes of chunk content (N)
 4        | int        | num bytes of children chunks (M)
 
