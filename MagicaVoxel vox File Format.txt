@@ -49,6 +49,7 @@ N        |            | chunk content
 M        |            | children chunks
 -------------------------------------------------------------------------------
 
+
 3. Chunk id 'MAIN' : the root chunk and parent chunk of all the other chunks
 
 
@@ -74,7 +75,7 @@ M        |            | children chunks
 -------------------------------------------------------------------------------
 # Bytes  | Type       | Value
 -------------------------------------------------------------------------------
-4        | int        | numVoxels
+4        | int        | numVoxels (N)
 4 x N    | int        | (x, y, z, colorIndex) : 1 byte for each component
 -------------------------------------------------------------------------------
 
@@ -84,8 +85,8 @@ M        |            | children chunks
 # Bytes  | Type       | Value
 -------------------------------------------------------------------------------
 4 x 256  | int        | (R, G, B, A) : 1 byte for each component
-                      | <NOTICE>
-                      | color [0-254] are mapped to palette index [1-255], e.g : 
+                      | * <NOTICE>
+                      | * color [0-254] are mapped to palette index [1-255], e.g : 
                       | 
                       | for ( int i = 0; i < 255; i++ ) {
                       |     palette[i + 1] = ReadRGBA(); 
@@ -144,7 +145,7 @@ unsigned int default_palette[256] = {
                       | bit(6) : Glow
                       | bit(7) : isTotalPower (*no value)
 
-4 * N    | float      | normalized property value (0.0 - 1.0] : greater than 0
-                      | need to map to real range
-                      | Plastic material only accepts {0.0, 1.0} for this version
+4 * N    | float      | normalized property value : (0.0 - 1.0]
+                      | * need to map to real range
+                      | * Plastic material only accepts {0.0, 1.0} for this version
 -------------------------------------------------------------------------------
