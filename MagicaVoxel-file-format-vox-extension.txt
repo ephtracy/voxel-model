@@ -1,6 +1,7 @@
 * there can be multiple SIZE and XYZI chunks for multiple models
 * palette chunk is always stored into file, so no default palette is needed
 * MATT chunk is deprecated, replaced by MATL, see (4)
+* (a), (b), (c) are special data types
 
 =================================
 (a) STRING type
@@ -64,7 +65,7 @@ S : Shape Node
 int32	: node id
 DICT	: node attributes
 	  (_name : string)
-	  (_hidden : int)
+	  (_hidden : 0/1)
 int32 	: child node id
 int32 	: reserved id (must be -1)
 int32	: layer id
