@@ -31,7 +31,7 @@ R =
  0  0 -1
 -1  0  0 
 ==>
-unsigned char _r = (1 << 0) | (2 << 2) | (0 << 4) |(1 << 5) |(1 << 6)
+unsigned char _r = (1 << 0) | (2 << 2) | (0 << 4) | (1 << 5) | (1 << 6)
 
 bit | value
 0-1 : 1 : index of non-zero entry in row 0
