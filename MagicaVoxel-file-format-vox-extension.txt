@@ -1,0 +1,119 @@
+* there can be multiple SIZE and XYZI chunks for multiple models
+* palette chunk is always stored into file, so no default palette is needed
+* MATT chunk is deprecated, replaced by MATL, see (4)
+
+=================================
+(a) STRING type
+
+int32   : buffer size (in bytes)
+int8	: buffer (without ending "\0")
+
+=================================
+(b) DICT type
+
+int32	: num key-value pairs
+
+// for each key-value pair
+{
+STRING	: key
+STRING	: value
+}
+
+=================================
+(c) ROTATION type
+
+store row-major rotation in bits of bytes
+
+for example :
+R =
+ 0  1  0
+ 0  0 -1
+-1  0  0 
+==>
+unsigned char _r = (1 << 0) | (2 << 2) | (0 << 4) |(1 << 5) |(1 << 6)
+
+bit | value
+0-1 : 1 : index of non-zero entry in row 0
+2-3 : 2 : index of non-zero entry in row 1
+4   : 0 : positive in row 0
+5   : 1 : negative in row 1
+6   : 1 : negative in row 2
+
+=================================
+(d) Scene Graph
+
+T : Transform Node
+G : Group Node
+S : Shape Node
+
+     T
+     |
+     G
+    / \
+   T   T
+   |   |
+   G   S
+  / \
+ T   T
+ |   |
+ S   S
+
+=================================
+(1) Transform Node Chunk : "nTRN"
+
+int32	: node id
+DICT	: node attributes
+	  (_name : string)
+	  (_hidden : int)
+int32 	: child node id
+int32 	: reserved id (must be -1)
+int32	: layer id
+int32	: num frames (must be 1)
+
+// for each frame
+{
+DICT	: frame attributes
+	  (_r : int8) ROTATION, see (c)
+	  (_t : int32x3) translation
+}
+
+=================================
+(2) Group Node Chunk : "nGRP" 
+
+int32	: node id
+DICT	: node attributes
+int32 	: num children nodes
+
+// for each child
+{
+int32	: child node id
+}
+
+=================================
+(3) Shape Node Chunk : "nSHP" 
+
+int32	: node id
+DICT	: node attributes
+int32 	: num models (must be 1)
+
+// for each model
+{
+int32	: model id
+DICT	: model attributes : reserved
+}
+
+=================================
+(4) Material Chunk : "MATL"
+
+int32	: material id
+DICT	: material properties
+	  (_type : str) _diffuse, _metal, _glass, _emit
+	  (_weight : float) range 0 ~ 1
+	  (_rough : float)
+	  (_spec : float)
+	  (_ior : float)
+	  (_att : float)
+	  (_flux : float)
+	  (_glow : float)
+	  (_unit)
+	  (_plastic)
