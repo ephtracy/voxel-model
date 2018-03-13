@@ -7,7 +7,7 @@
 (a) STRING type
 
 int32   : buffer size (in bytes)
-int8	: buffer (without ending "\0")
+int8xN	: buffer (without ending "\0")
 
 =================================
 (b) DICT type
@@ -18,7 +18,7 @@ int32	: num key-value pairs
 {
 STRING	: key
 STRING	: value
-}
+}xN
 
 =================================
 (c) ROTATION type
@@ -76,7 +76,7 @@ int32	: num frames (must be 1)
 DICT	: frame attributes
 	  (_r : int8) ROTATION, see (c)
 	  (_t : int32x3) translation
-}
+}xN
 
 =================================
 (2) Group Node Chunk : "nGRP" 
@@ -88,7 +88,7 @@ int32 	: num children nodes
 // for each child
 {
 int32	: child node id
-}
+}xN
 
 =================================
 (3) Shape Node Chunk : "nSHP" 
@@ -101,7 +101,7 @@ int32 	: num models (must be 1)
 {
 int32	: model id
 DICT	: model attributes : reserved
-}
+}xN
 
 =================================
 (4) Material Chunk : "MATL"
