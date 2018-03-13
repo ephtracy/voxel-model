@@ -1,5 +1,5 @@
-* there can be multiple SIZE and XYZI chunks for multiple models
-* palette chunk is always stored into file, so no default palette is needed
+* there can be multiple SIZE and XYZI chunks for multiple models; model id is their index in order
+* palette chunk is always stored into file, so default palette is not needed any more
 * MATT chunk is deprecated, replaced by MATL, see (4)
 * (a), (b), (c) are special data types
 
@@ -36,9 +36,9 @@ unsigned char _r = (1 << 0) | (2 << 2) | (0 << 4) | (1 << 5) | (1 << 6)
 bit | value
 0-1 : 1 : index of non-zero entry in row 0
 2-3 : 2 : index of non-zero entry in row 1
-4   : 0 : positive in row 0
-5   : 1 : negative in row 1
-6   : 1 : negative in row 2
+4   : 0 : sign in row 0 (0 : positive; 1 : negative)
+5   : 1 : sign in row 1 (0 : positive; 1 : negative)
+6   : 1 : sign in row 2 (0 : positive; 1 : negative)
 
 =================================
 (d) Scene Graph
