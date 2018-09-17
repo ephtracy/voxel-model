@@ -1,18 +1,18 @@
-* there can be multiple SIZE and XYZI chunks for multiple models; model id is their index in order
-* palette chunk is always stored into file, so default palette is not needed any more
-* MATT chunk is deprecated, replaced by MATL, see (4)
-* (a), (b), (c) are special data types
+* there can be multiple SIZE and XYZI chunks for multiple models; model id is their index in the stored order
+* the palette chunk is always stored into the file, so default palette is not needed any more
+* the MATT chunk is deprecated, replaced by the MATL chunk, see (4)
+* (a), (b), (c) are special data types; (d) is the scene graph in the world editor
 
 =================================
 (a) STRING type
 
 int32   : buffer size (in bytes)
-int8xN	: buffer (without ending "\0")
+int8xN	: buffer (without the ending "\0")
 
 =================================
 (b) DICT type
 
-int32	: num key-value pairs
+int32	: num of key-value pairs
 
 // for each key-value pair
 {
@@ -23,7 +23,7 @@ STRING	: value
 =================================
 (c) ROTATION type
 
-store row-major rotation in bits of bytes
+store a row-major rotation in the bits of a byte
 
 for example :
 R =
@@ -34,11 +34,11 @@ R =
 unsigned char _r = (1 << 0) | (2 << 2) | (0 << 4) | (1 << 5) | (1 << 6)
 
 bit | value
-0-1 : 1 : index of non-zero entry in row 0
-2-3 : 2 : index of non-zero entry in row 1
-4   : 0 : sign in row 0 (0 : positive; 1 : negative)
-5   : 1 : sign in row 1 (0 : positive; 1 : negative)
-6   : 1 : sign in row 2 (0 : positive; 1 : negative)
+0-1 : 1 : index of the non-zero entry in the first row
+2-3 : 2 : index of the non-zero entry in the second row
+4   : 0 : the sign in the first row (0 : positive; 1 : negative)
+5   : 1 : the sign in the second row (0 : positive; 1 : negative)
+6   : 1 : the sign in the third row (0 : positive; 1 : negative)
 
 =================================
 (d) Scene Graph
@@ -69,7 +69,7 @@ DICT	: node attributes
 int32 	: child node id
 int32 	: reserved id (must be -1)
 int32	: layer id
-int32	: num frames (must be 1)
+int32	: num of frames (must be 1)
 
 // for each frame
 {
@@ -83,7 +83,7 @@ DICT	: frame attributes
 
 int32	: node id
 DICT	: node attributes
-int32 	: num children nodes
+int32 	: num of children nodes
 
 // for each child
 {
@@ -95,7 +95,7 @@ int32	: child node id
 
 int32	: node id
 DICT	: node attributes
-int32 	: num models (must be 1)
+int32 	: num of models (must be 1)
 
 // for each model
 {
@@ -115,6 +115,12 @@ DICT	: material properties
 	  (_ior : float)
 	  (_att : float)
 	  (_flux : float)
-	  (_glow : float)
-	  (_unit)
 	  (_plastic)
+	  
+=================================
+(5) Layer Chunk : "LAYR"
+int32	: layer id
+DICT	: layer atrribute
+	  (_name : string)
+	  (_hidden : 0/1)
+int32	: reserved id, must be -1
