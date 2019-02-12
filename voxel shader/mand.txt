@@ -1,0 +1,52 @@
+// console commands
+// 'xs mand [n]' : e.g. 'xs mand 8'
+
+// shader inputs
+// uniform vec3		iVolumeSize;	// volume size [1-126]
+// uniform float	iColorIndex;	// current color index [1-255]
+// uniform vec3		iMirror;		// current mirror mode [0-1]
+// uniform vec3		iAxis;			// current axis mode [0-1]
+
+// uniform float	iFrame;			// current anim frame index
+// uniform float	iNumFrames;		// total num of anim frames
+
+// uniform float	iIter;			// current iteration index
+
+// uniform vec4		iRand;			// random number
+
+// uniform float	iArgs[8];		// user args
+
+// built-in functions
+// float voxel( vec3 v );			// get voxel color index at position v
+
+vec3 powern( vec3 v, float n ) {
+	float r = length( v );
+	float phi = atan( v.y, v.x );
+	float theta = atan( length( v.xy ), v.z );
+
+	r = pow( r, n );
+	phi *= n;
+	theta *= n;
+
+	return r * vec3(
+		sin( theta ) * vec2( cos( phi ), sin( phi ) ),
+		cos( theta )
+	);
+}
+
+// generate new voxel color index at position v
+float map( vec3 v ) {
+	float n = max( iArgs[0], 4.0 );
+	
+	vec3 center = iVolumeSize * 0.5;
+	
+	float size = min( min( center.x, center.y ), center.z );
+
+	vec3 u = ( v + 0.5 - center ) / size * 1.1;
+
+	for ( int i = 0; i < 8; i++ ) {
+		u = powern( u, n ) + u;
+	}
+	
+	return iColorIndex * step( length( u ), 2.0 );
+}

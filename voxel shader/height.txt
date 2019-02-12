@@ -1,0 +1,27 @@
+// console commands
+// 'xs height 0.5'
+
+// shader inputs
+// uniform vec3		iVolumeSize;	// volume size [1-126]
+// uniform float	iColorIndex;	// current color index [1-255]
+// uniform vec3		iMirror;		// current mirror mode [0-1]
+// uniform vec3		iAxis;			// current axis mode [0-1]
+
+// uniform float	iFrame;			// current anim frame index
+// uniform float	iNumFrames;		// total num of anim frames
+
+// uniform float	iIter;			// current iteration index
+
+// uniform vec4		iRand;			// random number
+
+// uniform float	iArgs[8];		// user args
+
+// built-in functions
+// float voxel( vec3 v );			// get voxel color index at position v
+
+// generate new voxel color index at position v
+float map( vec3 v ) {
+	float height = 255.0 - voxel( vec3( v.xy, 0.0 ) );
+	height = height * iArgs[0];
+	return (v.z <= height ? iColorIndex : 0.0 );
+}

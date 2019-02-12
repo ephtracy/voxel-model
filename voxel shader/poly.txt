@@ -1,0 +1,48 @@
+// console commands
+// 'xs poly [n]' : e.g. 'xs poly 7'
+// 'xs poly [n] [ratio]' : e.g. 'xs poly 7 0.5'
+
+// shader inputs
+// uniform vec3		iVolumeSize;	// volume size [1-126]
+// uniform float	iColorIndex;	// current color index [1-255]
+// uniform vec3		iMirror;		// current mirror mode [0-1]
+// uniform vec3		iAxis;			// current axis mode [0-1]
+
+// uniform float	iFrame;			// current anim frame index
+// uniform float	iNumFrames;		// total num of anim frames
+
+// uniform float	iIter;			// current iteration index
+
+// uniform vec4		iRand;			// random number
+
+// uniform float	iArgs[8];		// user args
+
+// built-in functions
+// float voxel( vec3 v );			// get voxel color index at position v
+
+// generate new voxel color index at position v
+float map( vec3 v ) {
+	const float PI = 3.1415926;
+
+	// model center
+	vec3 center = iVolumeSize * 0.5;
+	
+	// 2D pos
+	vec2 u = ( v + 0.5 - center ).xy;
+
+	// poly
+	float angle = PI * 2.0 / max( floor( iArgs[0] ), 3.0 );
+	float t = min( center.x, center.y );
+
+	// polar coord
+	float r = length( u );
+	float theta = atan( u.y, u.x ) + PI;
+
+	r *= cos( angle * abs( fract( theta / angle ) - 0.5 ) );
+	t *= cos( angle * 0.5 );
+
+	r = max( r, 0.0 );
+	t = max( t, 0.0 );
+
+	return iColorIndex * step( r, t ) * step( t * iArgs[1], r );
+}
