@@ -23,7 +23,7 @@ STRING	: value
 =================================
 (c) ROTATION type
 
-store a row-major rotation in the bits of a byte
+store a row-major (XZY) rotation in the bits of a byte
 
 for example :
 R =
@@ -39,6 +39,10 @@ bit | value
 4   : 0 : the sign in the first row (0 : positive; 1 : negative)
 5   : 1 : the sign in the second row (0 : positive; 1 : negative)
 6   : 1 : the sign in the third row (0 : positive; 1 : negative)
+
+Note: the index of the non-zero entry of the third row is remaining
+complimentary index to the first and second, i.e. if first index = 1
+and second index = 2, then the third = 0.
 
 =================================
 (d) Scene Graph
@@ -59,13 +63,28 @@ S : Shape Node
  |   |
  S   S
 
+Note: in order to build transformations, you need to traverse the scene
+graph recursively, starting with root Transform node, and then for every
+next transform:
+
+* Translations are added when traversing
+* Rotation matrices are multiplied (parent * transform)
+
+It's preferable to maintain two separate stacks for translations
+(vec3 stack), and a matrix stack. For every Transfrom node, you peek the
+stacks, and add vector in a stack to Transform node's translation vector,
+and multiply stack's rotation matrix by Transform node's rotation matrix,
+and push these values to their respective stacks.
+
+For every Shape node, you can just pop both values and use them.
+
 =================================
 (1) Transform Node Chunk : "nTRN"
 
 int32	: node id
 DICT	: node attributes
 	  (_name : string)
-	  (_hidden : 0/1)
+	  (_hidden : "0" or "1")
 int32 	: child node id
 int32 	: reserved id (must be -1)
 int32	: layer id
@@ -74,8 +93,11 @@ int32	: num of frames (must be 1)
 // for each frame
 {
 DICT	: frame attributes
-	  (_r : int8) ROTATION, see (c)
-	  (_t : int32x3) translation
+	  (_r : int8) ROTATION in STRING (i.e. "36"), see (c)
+	  (_t : int32x3) translation in STRING format separated
+	                 by spaces (i.e. "-1 10 4"). The anchor
+	                 for these translations is center of the
+	                 box.
 }xN
 
 =================================
