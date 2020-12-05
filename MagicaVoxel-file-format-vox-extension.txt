@@ -127,12 +127,12 @@ DICT	: layer attribute
 int32	: reserved id, must be -1
 	  
 =================================
-(6) Layer Chunk : "rOBJ"
+(6) Render Objects Chunk : "rOBJ"
 
 DICT	: rendering attributes
 	  
 =================================
-(7) Layer Chunk : "rCAM"
+(7) Render Camera Chunk : "rCAM"
 
 int32	: camera id
 DICT	: camera attribute
@@ -144,7 +144,7 @@ DICT	: camera attribute
 	  (_fov : int)
 	  
 =================================
-(8) Layer Chunk : "NOTE"
+(8) Color naming Chunk : "NOTE"
 
 int32	: num of color names
 
@@ -154,7 +154,7 @@ STRING	: color name
 }xN
 	  
 =================================
-(9) Layer Chunk : "IMAP"
+(9) Index MAP Chunk : "IMAP"
 
 size	: 256
 // for each index
