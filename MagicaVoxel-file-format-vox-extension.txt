@@ -144,7 +144,7 @@ DICT	: camera attribute
 	  (_fov : int)
 	  
 =================================
-(8) Color naming Chunk : "NOTE"
+(8) Palette Note Chunk : "NOTE"
 
 int32	: num of color names
 
