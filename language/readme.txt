@@ -1,0 +1,1 @@
+copy the files (dict.txt, local.txt, font/...) of selected language to config/ folder.
