@@ -4,6 +4,7 @@ Dict
 "Speed"="速度"
 "Mouse"="鼠标"
 "Expand"="展开"
+"Layer Name"="图层名称"
 ": Expand All"=": 展开全部"
 ": Close Inactive"=": 关闭不活跃"
 ": Hide Others"=": 隐藏其他"
