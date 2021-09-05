@@ -1,3 +1,4 @@
+// credit: .goka (twitter: @un_tako)
 Dict
 "2D/3D Shape"="2D/3D形状"
 "4/8 Neighbor Searching Direction"="4/8 近傍探索方向"
