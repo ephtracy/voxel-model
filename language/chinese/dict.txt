@@ -1,4 +1,15 @@
 Dict
+//ver. 0.99.6.4
+"Fov"="视野"
+"Speed"="速度"
+"Mouse"="鼠标"
+"Expand"="展开"
+": Expand All"=": 展开全部"
+": Close Inactive"=": 关闭不活跃"
+": Hide Others"=": 隐藏其他"
+": Show All"=": 显示全部"
+
+//ver. 0.99.6.3
 "2D/3D Shape"="2D/3D 形状"
 "4/8 Neighbor Searching Direction"="4/8 连通域搜索方向"
 "ACES Filmic Tone Mapping"="ACES 色调映射"
