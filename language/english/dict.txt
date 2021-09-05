@@ -1,4 +1,15 @@
 Dict
+//ver. 0.99.6.4
+"Fov"=""
+"Speed"=""
+"Mouse"=""
+"Expand"=""
+": Expand All"=""
+": Close Inactive"=""
+": Hide Others"=""
+": Show All"=""
+
+//ver. 0.99.6.3
 "2D/3D Shape"=""
 "4/8 Neighbor Searching Direction"=""
 "ACES Filmic Tone Mapping"=""
