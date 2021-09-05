@@ -4,6 +4,7 @@ Dict
 "Speed"=""
 "Mouse"=""
 "Expand"=""
+"Layer Name"=""
 ": Expand All"=""
 ": Close Inactive"=""
 ": Hide Others"=""
