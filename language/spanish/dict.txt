@@ -1,3 +1,4 @@
+//credit: Gonzo Lorenzo (twitter: @Gonzografia), Hispano2k12 (twitter: @Hispano2k12)
 Dict
 "2D/3D Shape"="Forma 2D/3D"
 "4/8 Neighbor Searching Direction"="4/8 Dirección de Búsqueda Colindante"
