@@ -6,6 +6,8 @@ Dict
 "Expand"=""
 "Library"=""
 "Layer Name"=""
+"New"=""
+"Delete"=""
 ": Expand All"=""
 ": Close Inactive"=""
 ": Hide Others"=""
