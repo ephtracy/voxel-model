@@ -1,5 +1,21 @@
 // credit: Dima (twitter: @Dimasvoxel)
 DICT
+
+//ver. 0.99.6.4	
+"Fov"="FOV"	
+"Speed"="Geschwindigkeit"	
+"Mouse"="Maus"	
+"Expand"="aufklappen"	
+"Library"="Bibliothek"	
+"Layer Name"="Ebene umbenennen"	
+"New"="Neu"	
+"Delete"="Löschen"	
+": Expand All"="Alle Aufklappen"	
+": Close Inactive"="Inaktive Ebenen schließen"	
+": Hide Others"="Andere verstecken"	
+": Show All"="Alle zeigen"	
+
+//ver. 0.99.6.3
 "2D/3D Shape"="2D/3D-Form"
 "4/8 Neighbor Searching Direction"="4/8 Suchrichtung für angrenzende Voxel"
 "ACES Filmic Tone Mapping"="ACES Filmic Tone Mapping"
