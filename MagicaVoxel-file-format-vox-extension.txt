@@ -119,8 +119,45 @@ DICT	: material properties
 	  
 =================================
 (5) Layer Chunk : "LAYR"
+
 int32	: layer id
 DICT	: layer attribute
 	  (_name : string)
 	  (_hidden : 0/1)
 int32	: reserved id, must be -1
+	  
+=================================
+(6) Render Objects Chunk : "rOBJ"
+
+DICT	: rendering attributes
+	  
+=================================
+(7) Render Camera Chunk : "rCAM"
+
+int32	: camera id
+DICT	: camera attribute
+	  (_mode : string)
+	  (_focus : vec(3))
+	  (_angle : vec(3))
+	  (_radius : int)
+	  (_frustum : float)
+	  (_fov : int)
+	  
+=================================
+(8) Palette Note Chunk : "NOTE"
+
+int32	: num of color names
+
+// for each name
+{
+STRING	: color name
+}xN
+	  
+=================================
+(9) Index MAP Chunk : "IMAP"
+
+size	: 256
+// for each index
+{
+int32	: palette index association
+}x256
