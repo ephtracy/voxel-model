@@ -120,7 +120,7 @@ DICT	: material properties
 =================================
 (5) Layer Chunk : "LAYR"
 int32	: layer id
-DICT	: layer atrribute
+DICT	: layer attribute
 	  (_name : string)
 	  (_hidden : 0/1)
 int32	: reserved id, must be -1
