@@ -1,4 +1,4 @@
-Dict
+DICT
 //ver. 0.99.6.4
 "Fov"="视野"
 "Speed"="速度"
@@ -6,6 +6,8 @@ Dict
 "Expand"="展开"
 "Library"="库"
 "Layer Name"="图层名称"
+"New"="创建"
+"Delete"="删除"
 ": Expand All"=": 展开全部"
 ": Close Inactive"=": 关闭不活跃"
 ": Hide Others"=": 隐藏其他"
@@ -69,9 +71,9 @@ Dict
 "Circle"="圆形"
 "Clamp Energy"="能量限制"
 "Clay"="圆角"
-"Clear"="清除"
+"Clear"="删除"
 "Clear Notes"="清除注释"
-"Clear Voxels [Backspace/Delete]"="清除 [Backspace/Delete]"
+"Clear Voxels [Backspace/Delete]"="删除 [Backspace/Delete]"
 "Close"="关闭"
 "Cloud"="云雾"
 "Cloud Material"="云雾材质"
@@ -103,7 +105,7 @@ Dict
 "Default Palette 1"="加载默认调色板 1"
 "Default Palette 2"="加载默认调色板 2"
 "Default Palette 3"="加载默认调色板 3"
-"Delete Objects [Backspace/Delete]"="移除物体 [Backspace/Delete]"
+"Delete Objects [Backspace/Delete]"="删除物体 [Backspace/Delete]"
 "Denoise"="除噪"
 "Density"="密度"
 "Diagonal"="对角镜像"
