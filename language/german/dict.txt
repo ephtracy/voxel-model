@@ -10,10 +10,10 @@ DICT
 "Layer Name"="Ebene umbenennen"	
 "New"="Neu"	
 "Delete"="Löschen"	
-": Expand All"="Alle Aufklappen"	
-": Close Inactive"="Inaktive Ebenen schließen"	
-": Hide Others"="Andere verstecken"	
-": Show All"="Alle zeigen"	
+": Expand All"=": Alle Aufklappen"	
+": Close Inactive"=": Inaktive Ebenen schließen"	
+": Hide Others"=": Andere verstecken"	
+": Show All"=": Alle zeigen"	
 
 //ver. 0.99.6.3
 "2D/3D Shape"="2D/3D-Form"
