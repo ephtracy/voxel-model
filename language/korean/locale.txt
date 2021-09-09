@@ -1,0 +1,7 @@
+font_std    : {path = [[$/config/font/calibri-bold-lit.otf]] scale = '1.75 1.75'}
+font_mono   : {path = [[$/config/font/consolas-bold-lit.otf]] scale = '1.7 1.8'}
+font_utf    : {path = [[$/config/font/NotoSansKR-Bold.otf]] scale = '1.5 1.5'}
+font_symbol : {path = [[$/config/font/symbol.otf]]}
+font_icon   : {path = [[$/config/font/icon.png]]}
+
+dict = [[$/config/dict.txt]]
