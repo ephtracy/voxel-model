@@ -534,5 +534,5 @@ Dict
 "Yaw"="Angulo do Sol"
 "Yaw Angle of Sun Light"="Definir Rotacao do Sol"
 "Zoom"="Zoom"
-"dH"="MH"
-"dV"="MV"
+"dH"="dH"
+"dV"="dV"
