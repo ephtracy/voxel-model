@@ -1,3 +1,4 @@
+// credit: Dima (twitter: @Dimasvoxel)
 DICT
 "2D/3D Shape"="2D/3D-Form"
 "4/8 Neighbor Searching Direction"="4/8 Suchrichtung für angrenzende Voxel"

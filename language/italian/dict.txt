@@ -1,3 +1,4 @@
+//credit: Andrea Leganza (twitter: @AndreaLeganza)
 Dict
 "2D/3D Shape"="Forma 2D/3D"
 "4/8 Neighbor Searching Direction"="Direzione di ricerca dei limitrofi 4/8"

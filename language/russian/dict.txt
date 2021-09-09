@@ -1,3 +1,4 @@
+//credit: Bzikarius (twitter: @Tixzel)
 Dict
 "2D/3D Shape"="2D/3D форма"
 "4/8 Neighbor Searching Direction"="4/8 направлений поиска соседей"
