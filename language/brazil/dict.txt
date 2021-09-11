@@ -1,6 +1,20 @@
 //credit: Márcio Lopes (twitter: @MarcioAugust)
 
-Dict
+//0.99.6.4
+"Fov"="Campo de Visão"
+"Speed"="Velocidade"
+"Mouse"="Mouse"
+"Expand"="Expandir"
+"Library"="Biblioteca"
+"Layer Name"="Nome da Camada"
+"New"="Novo"
+"Delete"="Deletar"
+": Expand All"="Expandir Tudo"
+": Close Inactive"="Fechar Inativos"
+": Hide Others"="Esconder Restantes"
+": Show All"="Mostrar Tudo"
+
+//0.99.6.3
 "2D/3D Shape"="Forma 2D ou 3D"
 "4/8 Neighbor Searching Direction"="4/8 Amplitude da Busca"
 "ACES Filmic Tone Mapping"="ACES Filmic Tone Mapping"
