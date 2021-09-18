@@ -71,6 +71,10 @@ M        |            | children chunks
 -------------------------------------------------------------------------------
 4        | int        | numVoxels (N)
 4 x N    | int        | (x, y, z, colorIndex) : 1 byte for each component
+                      
+                      | Note: Z axis is vertical axis, so you might want to 
+                      | read them first and then assemble as (x, z, y) for Y-up
+                      | coordinate system.
 -------------------------------------------------------------------------------
 
 
