@@ -69,13 +69,14 @@ DICT	: node attributes
 int32 	: child node id
 int32 	: reserved id (must be -1)
 int32	: layer id
-int32	: num of frames (must be 1)
+int32	: num of frames (must be greater than 0)
 
 // for each frame
 {
 DICT	: frame attributes
-	  (_r : int8) ROTATION, see (c)
+	  (_r : int8)    ROTATION, see (c)
 	  (_t : int32x3) translation
+	  (_f : int32)   frame index, start from 0 
 }xN
 
 =================================
@@ -95,12 +96,13 @@ int32	: child node id
 
 int32	: node id
 DICT	: node attributes
-int32 	: num of models (must be 1)
+int32 	: num of models (must be greater than 0)
 
 // for each model
 {
 int32	: model id
 DICT	: model attributes : reserved
+	(_f : int32)   frame index, start from 0
 }xN
 
 =================================
