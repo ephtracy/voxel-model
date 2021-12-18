@@ -1,4 +1,11 @@
-DICT
+//ver. 0.99.7.0
+"Reverse" = "反转"
+"Position" = "位置"
+"Rotation" = "旋转"
+"Anim" = "动画"
+"Start" = "开始"
+"End" = "结束"
+
 //ver. 0.99.6.4
 "Fov"="视野"
 "Speed"="速度"
