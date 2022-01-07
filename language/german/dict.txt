@@ -1,6 +1,14 @@
 // credit: Dima (twitter: @Dimasvoxel)
 DICT
 
+//ver. 0.99.7.0
+"Reverse" = "Umkehren"
+"Position" = "Position"
+"Rotation" = "Rotation"
+"Anim" = "Anim"
+"Start" = "Start"
+"End" = "Ende"
+
 //ver. 0.99.6.4	
 "Fov"="FOV"	
 "Speed"="Geschwindigkeit"	
