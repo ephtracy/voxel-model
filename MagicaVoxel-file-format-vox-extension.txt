@@ -74,9 +74,9 @@ int32	: num of frames (must be greater than 0)
 // for each frame
 {
 DICT	: frame attributes
-	  (_r : int8)    ROTATION, see (c)
-	  (_t : int32x3) translation
-	  (_f : int32)   frame index, start from 0 
+	  (_r : int8 as a string)    ROTATION, see (c)
+	  (_t : int32x3 as a string, separated by spaces) translation
+	  (_f : int32 as a string)   frame index, start from 0 
 }xN
 
 =================================
